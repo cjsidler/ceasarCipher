@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ceasarCipher</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d7f651ca0f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="title">ceasarCipher<br><span>ENCODE & DECODE</span></h1>
+    <div id="container">
+        <hr>
+        <div id="encoder" class="section">
+            <h2 class="sub-title">Encoder</h2>
+            <div class="textInput">
+                <label for="encodeText">Text:&ensp;</label>
+                <input type="text" id="encodeText" name="encodeText">
+                <label for="encodeShift">Shift:&ensp;</label>
+                <select type="number" id="encodeShift" name="encodeShift">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div id="encode-result-wrapper" class="result-wrapper">
+                <span class="result-label">Result:</span>
+                <span id="encode-result"></span>
+            </div>
+        </div>
+        <hr>
+        <div id="decoder" class="section">
+            <h2 class="sub-title">Decoder</h2>
+            <div class="textInput">
+                <label for="decodeText">Text:&ensp;</label>
+                <input type="text" id="decodeText" name="decodeShift">
+                <label for="decodeShift">Shift:&ensp;</label>
+                <select type="number" id="decodeShift" name="decodeShift">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+            <div id="decode-result-wrapper" class="result-wrapper">
+                <span class="result-label">Result:</span>
+                <span id="decode-result"></span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

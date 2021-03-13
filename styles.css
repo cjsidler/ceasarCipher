@@ -1,0 +1,88 @@
+:root {
+    --fonts: Jost, sans-serif;
+}
+
+h1, h2, label, .result-label {
+    font-family: var(--fonts);
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+input {
+    box-sizing: border-box;
+    height: 35px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+label, .result-label {
+    font-size: 20px;
+}
+
+select {
+    box-sizing: border-box;
+    height: 35px;
+    margin: 0;
+}
+
+#container {
+    width: 50%;
+    margin: auto;
+}
+
+#title {
+    font-size: 60px;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#title span {
+    font-size: 20px;
+    letter-spacing: 10px;
+}
+
+.section {
+    display: grid;
+    align-items: center;
+    grid-template: 
+        "sub-title sub-title sub-title" 1fr
+        "textInput textInput textInput" 1fr
+        "result result result" 1fr
+        / 1fr 1fr 1fr;
+    box-sizing: border-box;
+}
+
+.sub-title {
+    grid-area: sub-title;
+}
+
+.textInput {
+    grid-area: textInput;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-wrapper {
+    grid-area: result;
+}
+
+input {
+    width: 100%;
+    margin-right: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 3px double #e9e9e9;
+}
