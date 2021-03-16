@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d7f651ca0f.js" crossorigin="anonymous"></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
     <h1 id="title">ceasarCipher<br><span>ENCODE & DECODE</span></h1>
@@ -50,7 +51,7 @@
             </div>
             <div id="encode-result-wrapper" class="result-wrapper">
                 <span class="result-label">Result:</span>
-                <span id="encode-result"></span>
+                <span id="encode-result" class="result"></span>
             </div>
         </div>
         <hr>
@@ -58,7 +59,7 @@
             <h2 class="sub-title">Decoder</h2>
             <div class="textInput">
                 <label for="decodeText">Text:&ensp;</label>
-                <input type="text" id="decodeText" name="decodeShift">
+                <input type="text" id="decodeText" name="decodeText">
                 <label for="decodeShift">Shift:&ensp;</label>
                 <select type="number" id="decodeShift" name="decodeShift">
                     <option value="1">1</option>
@@ -90,7 +91,7 @@
             </div>
             <div id="decode-result-wrapper" class="result-wrapper">
                 <span class="result-label">Result:</span>
-                <span id="decode-result"></span>
+                <span id="decode-result" class="result"></span>
             </div>
         </div>
         <hr>

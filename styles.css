@@ -2,7 +2,7 @@
     --fonts: Jost, sans-serif;
 }
 
-h1, h2, label, .result-label {
+h1, h2, label, .result-label, .result {
     font-family: var(--fonts);
 }
 
@@ -20,6 +20,7 @@ input {
     height: 35px;
     margin: 0;
     flex-grow: 1;
+    font-size: 20px;
 }
 
 label, .result-label {
@@ -54,10 +55,11 @@ select {
 .section {
     display: grid;
     align-items: center;
+    grid-auto-rows: auto;
     grid-template: 
-        "sub-title sub-title sub-title" 1fr
-        "textInput textInput textInput" 1fr
-        "result result result" 1fr
+        "sub-title sub-title sub-title" 50px
+        "textInput textInput textInput" 50px
+        "result result result" minmax(50px, auto)
         / 1fr 1fr 1fr;
     box-sizing: border-box;
 }
@@ -75,6 +77,12 @@ select {
 
 .result-wrapper {
     grid-area: result;
+}
+
+.result {
+    font-size: 20px;
+    word-wrap: break-word;
+    color: limegreen;
 }
 
 input {
