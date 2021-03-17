@@ -2,7 +2,7 @@
     --fonts: Jost, sans-serif;
 }
 
-h1, h2, label, .result-label, .result {
+h1, h2, label, p, .result-label, .result {
     font-family: var(--fonts);
 }
 
@@ -13,6 +13,11 @@ h1 {
 h2 {
     font-weight: 400;
     margin: 10px 0;
+}
+
+p {
+    text-align: center;
+    margin: 0 0 20px 0;
 }
 
 input {
