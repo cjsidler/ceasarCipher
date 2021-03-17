@@ -95,6 +95,19 @@ function decoder(char, shifter) {
 
 }
 
+// populate select drop-downs with #1 - #25
+function fillSelect(element) {
+    for (let i = 1; i <= 25; i++) {
+        let option = document.createElement('option')
+        option.innerHTML = i;
+        option.value = i;
+        element.appendChild(option);
+    }
+}
+
+fillSelect(encodeShift);
+fillSelect(decodeShift);
+
 // Event handlers to call the cipher function and pass it the event
 // as well as additional arguments (the appropriate input field, the 
 // appropriate shift value, and the appropriate result span element
