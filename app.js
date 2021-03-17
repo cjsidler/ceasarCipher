@@ -72,7 +72,7 @@ function encoder(char, shifter) {
 
     if (charIndex < 0) {
         return char;
-    } else if (charIndex >= 0 && charIndex < ((13 - shifter) * 2) + shifter - 1) {
+    } else if (charIndex >= 0 && charIndex <= ((13 - shifter) * 2) + shifter - 1) {
         return alphabet[charIndex + shifter];
     } else {
         return alphabet[charIndex + shifter - 26];
