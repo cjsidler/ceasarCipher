@@ -1,5 +1,6 @@
 :root {
     --fonts: Jost, sans-serif;
+    --content: ;
 }
 
 h1, h2, label, p, .result-label, .result {
@@ -84,12 +85,6 @@ select {
     grid-area: result;
 }
 
-.result {
-    font-size: 20px;
-    word-wrap: break-word;
-    color: limegreen;
-}
-
 input {
     width: 100%;
     margin-right: 10px;
@@ -98,4 +93,96 @@ input {
 hr {
     border: 0;
     border-top: 3px double #e9e9e9;
+}
+
+.result {
+
+    font-size: 20px;
+    word-wrap: break-word;
+    color: limegreen;
+    position: relative;
+    display: inline-block;
+}
+
+
+.tool-tip::before,
+.tool-tip::after {
+    --scale: 0;
+    --tooltip-color: #333;
+    --arrow-size: 8px;
+
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+    transition: 100ms transform;
+    transform-origin: top center;
+}
+
+.copy {
+    --content: 'Copy';
+}
+
+.copied {
+    --content: 'Copied!';
+}
+
+.tool-tip::before {
+    --translate-y: calc(100% + var(--arrow-size));
+
+    content: var(--content);
+    width: max-content;
+    height: auto;
+    background-color: var(--tooltip-color);
+    color: white;
+    font-family: var(--fonts);
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5%;
+    padding: 8px;
+}
+
+.tool-tip:hover::before,
+.tool-tip:hover::after {
+    --scale: 1;
+}
+
+.tool-tip::after {
+    --translate-y: var(--arrow-size);
+
+    content: '';
+    border: 8px solid transparent;
+    border-bottom-color: var(--tooltip-color);
+    transform-origin: bottom center;
+}
+
+.bounce-in {
+    animation: bounce-in 400ms 1;
+}
+
+@keyframes bounce-in {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    16% {
+        transform: scale(.75);
+        opacity: 0;
+    }
+    39% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    52% {
+        transform: scale(.80);
+    }
+    71% {
+        transform: scale(1.15);
+    }
+    80% {
+        transform: scale(.95);
+    }
+    94% {
+        transform: scale(1.05);
+    }
 }

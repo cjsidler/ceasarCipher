@@ -27,6 +27,7 @@ function cipher(event, codeType, shifter, outputSpan) {
     // change the result span back to 'Awaiting input'
     if (codeType.value === '') {
         outputSpan.innerHTML = awaitingInput;
+        outputSpan.classList.remove('show-tool-tip');
         return;
     }
 
@@ -62,6 +63,7 @@ function cipher(event, codeType, shifter, outputSpan) {
 
     // set the appropriate result element's text to the encoded/decoded text
     outputSpan.innerHTML = resultArray.join("");
+    outputSpan.classList.add('show-tool-tip');
 
 }
 
@@ -70,12 +72,20 @@ function cipher(event, codeType, shifter, outputSpan) {
 function encoder(char, shifter) {
     let charIndex = alphabet.indexOf(char);
 
+    // if (charIndex < 0) {
+    //     return char;
+    // } else if (charIndex >= 0 && charIndex <= ((13 - shifter) * 2) + shifter - 1) {
+    //     return alphabet[charIndex + shifter];
+    // } else {
+    //     return alphabet[charIndex + shifter - 26];
+    // }
+
     if (charIndex < 0) {
         return char;
-    } else if (charIndex >= 0 && charIndex <= ((13 - shifter) * 2) + shifter - 1) {
-        return alphabet[charIndex + shifter];
-    } else {
+    } else if (charIndex >= 26 - shifter && charIndex <= 25) {
         return alphabet[charIndex + shifter - 26];
+    } else {
+        return alphabet[charIndex + shifter];
     }
 
 }
@@ -108,12 +118,64 @@ function fillSelect(element) {
 fillSelect(encodeShift);
 fillSelect(decodeShift);
 
-// Event handlers to call the cipher function and pass it the event
-// as well as additional arguments (the appropriate input field, the 
-// appropriate shift value, and the appropriate result span element
-// to put the encoded or decoded text)
+function toggleBounce(clickedSpan) {
+    // toggle bounce-in class on span element clicked
+    if (clickedSpan.classList.contains('bounce-in')) {
+        clickedSpan.classList.remove('bounce-in');
+    } else {
+        clickedSpan.classList.add('bounce-in');
+    }
+}
+
+function bouncey(event) {
+    let clickedSpan = event.target;
+
+    if (clickedSpan.classList.contains('show-tool-tip')) {
+        
+        // change tool tip to Copied and toggle bounce effect
+        clickedSpan.classList.remove('copy');
+        clickedSpan.classList.add('copied');
+        toggleBounce(clickedSpan);
+        setTimeout(toggleBounce, 400, clickedSpan);
+
+        // copy to clipboard:
+        // get whatever is selected and create a range
+        const selection = window.getSelection();
+        const range = document.createRange();
+
+        // make the range equal to the contents of the span
+        range.selectNodeContents(clickedSpan);
+        // remove all existing selections
+        selection.removeAllRanges();
+        // select the contents of the span
+        selection.addRange(range);
+        // copy the contents of the span
+        document.execCommand('copy');
+        // remove the selection of the span
+        selection.removeAllRanges();
+    }
+}
+
+function addToolTip(event) {
+    let clickedSpan = event.target;
+
+    if (clickedSpan.classList.contains('show-tool-tip')) {
+        clickedSpan.classList.add('tool-tip', 'copy');
+    }
+}
+
+function removeToolTip(event) {
+    let clickedSpan = event.target;
+
+    if (clickedSpan.classList.contains('show-tool-tip')) {
+        clickedSpan.classList.remove('tool-tip', 'copied', 'copy');
+    }
+}
+
+// Event handlers to pass event and additional arguments based on element clicked
 let callEncoder = (event) => cipher(event, encodeText, parseInt(encodeShift.value), encodeResult);
 let callDecoder = (event) => cipher(event, decodeText, parseInt(decodeShift.value), decodeResult);
+
 
 
 // Event listeners for the input fields and shift drop-downs
@@ -122,3 +184,12 @@ encodeShift.addEventListener('change', callEncoder);
 
 decodeText.addEventListener('input', callDecoder);
 decodeShift.addEventListener('change', callDecoder);
+
+// Event listeners for result spans for copy to clipboard tool-tip
+encodeResult.addEventListener('click', bouncey);
+encodeResult.addEventListener('mouseover', addToolTip);
+encodeResult.addEventListener('mouseout', removeToolTip);
+
+decodeResult.addEventListener('click', bouncey);
+decodeResult.addEventListener('mouseover', addToolTip);
+decodeResult.addEventListener('mouseout', removeToolTip);
